@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852410184085",
+    "firebase_url": "https://mathdb-2382c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mathdb-2382c",
+    "storage_bucket": "mathdb-2382c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852410184085:android:108739c54a8c720c65c69c",
+        "android_client_info": {
+          "package_name": "com.example.mathtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852410184085-6dais4uc9g3tn9cv182bukpqckhkgjup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntx-ygOv1cYI29iai6nbpLJb6mperfbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852410184085-6dais4uc9g3tn9cv182bukpqckhkgjup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

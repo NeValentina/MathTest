@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Математика</string>
+    <string name="primary_school">Начальная школа</string>
+    <string name="middle_school">Средняя школа</string>
+    <string name="high_school">Старшая школа</string>
+    <string name="pass_thetest">Пройти тест</string>
+    <string name="test">Пример</string>
+    <string name="enteranswer">Введите ответ</string>
+    <string name="next">Далее</string>
+</resources>
