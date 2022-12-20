@@ -11,19 +11,19 @@
     <FrameLayout
 
         android:id="@+id/frame"
-        android:background="@color/btn_color"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="210dp"
         android:layout_marginTop="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
+        android:background="@drawable/listview_categories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintHorizontal_bias="0.5"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/TestTextView"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:onClick="onClickNextButton"
         android:text="@string/next"
+        android:background="@drawable/button_categories"
         android:textColor="@color/mainBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +70,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        android:background="@color/btn_color"
+
         android:backgroundTint="@color/btn_color"
-        android:clickable="true"
-        android:onClick="onClickTryAgainBtn"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:onClick="onClick"
         android:src="@drawable/try_again_btn"
         android:visibility="visible"
         app:fabSize="normal"
@@ -84,6 +83,51 @@
         app:layout_constraintTop_toBottomOf="@+id/frame"
         app:layout_constraintVertical_bias="0.3"
         app:maxImageSize="40dp"
+        app:tint="@null" />
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@null"
+        android:clickable="true"
+        android:backgroundTint="@color/btn_color"
+        app:srcCompat="@drawable/list"
+
+        android:onClick="onClick"
+        app:fabSize="normal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame"
+        app:maxImageSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_color"
+        android:backgroundTint="@color/btn_color"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:visibility="visible"
+        app:backgroundTintMode="src_in"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame"
+        app:layout_constraintVertical_bias="0.7"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/go_home_btn"
+        app:tint="@null"
         tools:ignore="SpeakableTextPresentCheck" />
 
 

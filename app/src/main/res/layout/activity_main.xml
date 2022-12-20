@@ -10,49 +10,58 @@
 
     <Button
         android:id="@+id/btn_primary"
-        android:layout_width="339dp"
+        android:layout_width="340dp"
         android:layout_height="87dp"
-        android:layout_marginTop="150dp"
+
         android:onClick="onClickBtn"
+        android:background="@drawable/button_categories"
         android:text="@string/primary_school"
         android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/btn_middle"
-        android:layout_width="339dp"
+        android:layout_width="340dp"
         android:layout_height="87dp"
-        android:layout_marginTop="50dp"
+
         android:onClick="onClickBtn"
         android:text="@string/middle_school"
+        android:background="@drawable/button_categories"
         android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_primary" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     <Button
         android:id="@+id/btn_high"
-        android:layout_width="339dp"
+        android:layout_width="340dp"
         android:layout_height="87dp"
-        android:layout_marginTop="50dp"
+
         android:onClick="onClickBtn"
         android:text="@string/high_school"
+        android:background="@drawable/button_categories"
         android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_middle" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

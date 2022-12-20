@@ -5,7 +5,9 @@
     android:id="@+id/lessonActivityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     android:background="#CCE6F8"
     tools:context=".TopicActivity">
 
@@ -15,8 +17,33 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:contextClickable="false"
+        android:layout_marginBottom="80dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </ListView>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/btn_color"
+        android:clickable="true"
+        app:srcCompat="@drawable/go_home_btn"
+        android:onClick="onClick"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:maxImageSize="35dp"
+
+        tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

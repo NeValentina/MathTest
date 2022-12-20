@@ -5,85 +5,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CCE6F8"
+    android:background="@drawable/back3"
     tools:context=".ChoiceTestActivity">
 
-    <TextView
-        android:id="@+id/TestTextView"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+    <FrameLayout
+
+        android:id="@+id/frame"
+        android:layout_width="300dp"
+        android:layout_height="210dp"
         android:layout_marginTop="150dp"
-        android:text="@string/test"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:background="@drawable/listview_categories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textAns1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/btn_color"
-        android:contextClickable="true"
-        android:onClick="onClick"
-        android:text="Ответ"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TestTextView" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textAns2"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/btn_color"
-        android:contextClickable="true"
-        android:onClick="onClick"
-        android:text="Ответ"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TestTextView" />
+        <TextView
+            android:id="@+id/TestTextView"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="@string/test"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/frame"
+            app:layout_constraintStart_toStartOf="@+id/frame"
+            app:layout_constraintTop_toTopOf="@+id/frame" />
 
-    <TextView
-        android:id="@+id/textAns3"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@color/btn_color"
-        android:layout_marginTop="20dp"
-        android:contextClickable="true"
-        android:onClick="onClick"
-        android:text="Ответ"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAns2" />
+    </FrameLayout>
 
-    <TextView
-        android:id="@+id/textAns4"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@color/btn_color"
-        android:layout_marginTop="20dp"
-        android:contextClickable="true"
-        android:onClick="onClick"
-        android:text="Ответ"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAns2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnTryAgain"
@@ -92,7 +44,8 @@
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/btn_color"
         android:clickable="true"
-        android:onClick="onClickTryAgainBtn"
+        app:tint="@null"
+        android:onClick="onClickMenu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:src="@drawable/try_again_btn"
         android:visibility="visible"
@@ -101,8 +54,137 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAns3"
-        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintTop_toBottomOf="@+id/frame"
+        app:layout_constraintVertical_bias="0.3"
         app:maxImageSize="40dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@null"
+        android:clickable="true"
+        android:backgroundTint="@color/btn_color"
+        app:srcCompat="@drawable/list"
+
+        android:onClick="onClickMenu"
+        app:fabSize="normal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame"
+        app:maxImageSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_color"
+        android:backgroundTint="@color/btn_color"
+        android:clickable="true"
+        android:onClick="onClickMenu"
+        android:visibility="visible"
+        app:backgroundTintMode="src_in"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame"
+        app:layout_constraintVertical_bias="0.7"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/go_home_btn"
+        app:tint="@null"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_categories"
+        android:textColor="@color/mainBlue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Ответ"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame" />
+
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_categories"
+        android:textColor="@color/mainBlue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Ответ"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_categories"
+        android:textColor="@color/mainBlue"
+        android:layout_marginTop="20dp"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Ответ"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_categories"
+        android:textColor="@color/mainBlue"
+        android:layout_marginTop="20dp"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Ответ"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_categories"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

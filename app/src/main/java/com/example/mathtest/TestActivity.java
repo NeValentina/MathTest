@@ -2,7 +2,11 @@ package com.example.mathtest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +20,12 @@ public class TestActivity extends AppCompatActivity {
     TextView exampleText;
     EditText answerText;
     Button btnNext;
-    FloatingActionButton btnTryAgain;
-    Integer correctAnswers,v,t,a,b,x,c,i, answerNum, rightAnswer;
-    float percent;
+    FloatingActionButton btnTryAgain, btnList, btnHome;
+    SharedPreferences sharedPreferences;
+    Integer correctAnswers,a,b,x,c,i, answerNum, rightAnswer;
+    float percent, bestResult;
     Bundle args;
-    private String topicTitle, testText;
+    private String topicTitle, topicLevel;
 
 
     @Override
@@ -35,24 +40,31 @@ public class TestActivity extends AppCompatActivity {
         answerText=findViewById(R.id.answerText);
         btnNext=findViewById(R.id.btnNextQuestion);
         btnTryAgain=findViewById(R.id.btnTryAgain);
+        btnList=findViewById(R.id.btn_list);
+        btnHome=findViewById(R.id.btn_home);
+
 
         answerNum=1;
         correctAnswers=0;
         percent = 0;
 
-//        System.out.println(args.getString("PARAM"));
         setTest();
+
+        sharedPreferences = getApplicationContext().
+                getSharedPreferences("com.example.mathtest", Context.MODE_PRIVATE);
     }
 
     private void setTest() {
 
+        String testText;
         btnTryAgain.setVisibility(View.INVISIBLE);
+        btnList.setVisibility(View.INVISIBLE);
+        btnHome.setVisibility(View.INVISIBLE);
 
         btnNext.setVisibility(View.VISIBLE);
         answerText.setVisibility(View.VISIBLE);
 
         topicTitle = args.getString("topicTitle");
-//        switch (topicTitle):
 
         switch (topicTitle) {
             case "Простое сложение и вычитание":
@@ -63,12 +75,17 @@ public class TestActivity extends AppCompatActivity {
                     testText = (a + " + " + b + " = ?");
                     rightAnswer = a + b;
                 } else {
-                    testText = (a + " - " + b + "= ?");
-                    rightAnswer = a - b;
+                    if (a>b){
+                        testText = (a + " - " + b + "= ?");
+                        rightAnswer = a - b;
+                    } else {
+                        testText = (b + " - " + a + "= ?");
+                        rightAnswer = b - a;
+                    }
                 }
                 exampleText.setText(testText);
-
                 break;
+
             case "Умножение":
                 a = (int) ((9 - 1) * Math.random()) + 2;
                 b = (int) ((9 - 1) * Math.random()) + 2;
@@ -81,15 +98,31 @@ public class TestActivity extends AppCompatActivity {
                     rightAnswer = a;
                 }
                 exampleText.setText(testText);
-
                 break;
+
             case "Уравнения":
                 a = (int) ((10 - 1) * Math.random()) + 1;
                 b = (int) ((100 - 1) * Math.random());
                 x = rightAnswer = (int) ((10 - 1) * Math.random()) + 1;
                 c = a * x + b;
-                String testText = (a + "x + " + b + " = " + c);
+                testText = (a + "x + " + b + " = " + c);
                 exampleText.setText(testText);
+                break;
+
+            case "Логарифмы":
+                i =  (int) (Math.round(Math.random()));
+                double a = (Math.round((10-1) * Math.random())) +1;
+                double b = (Math.round((3-1) * Math.random())) + 1;
+                double c = Math.pow(a, b);
+                if (i == 0){
+                    rightAnswer = (int) b;
+                    testText = ("log_"+(int)a+"{"+(int)c+"} = ?");
+                    exampleText.setText(testText);
+                } else {
+                    rightAnswer = (int) a;
+                    testText = ("log_?{"+(int)c+"} = "+(int)b);
+                    exampleText.setText(testText);
+                }
                 break;
         }
 
@@ -114,19 +147,56 @@ public class TestActivity extends AppCompatActivity {
                 btnNext.setVisibility(View.GONE);
                 answerText.setVisibility(View.GONE);
                 btnTryAgain.setVisibility(View.VISIBLE);
+                btnList.setVisibility(View.VISIBLE);
+                btnHome.setVisibility(View.VISIBLE);
 
-                String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + percent +"% )");
+
+                if (sharedPreferences.contains("Best "+topicTitle)){
+                    bestResult = sharedPreferences.getFloat("Best "+topicTitle, 0.0f);
+                    if (bestResult < percent){
+                        bestResult = percent;
+                        sharedPreferences.edit().putFloat("Best " + topicTitle, bestResult).apply();
+                    }
+                } else {
+                    bestResult = percent;
+                    sharedPreferences.edit().putFloat("Best " + topicTitle, percent).apply();
+                }
+
+                String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + percent +"% )\n\n\n" +
+                        "Лучший результат: " + bestResult +"%");
                 exampleText.setText(resultText);
             }
             answerText.setText("");
-//            System.out.println(correctAnswers + "|" + answerNum);
         }
     }
 
-    public void onClickTryAgainBtn(View view){
-        answerNum = 1;
-        correctAnswers = 0;
-        setTest();
+    public void onClick(View view){
+
+        Intent intent;
+        int id = view.getId();
+        topicLevel = args.getString("Level");
+        Log.i("TOPIC LEVEL",topicLevel);
+
+        //ПРОЙТИ ЗАНОВО
+        if(id==R.id.btnTryAgain) {
+            answerNum = 1;
+            correctAnswers = 0;
+            setTest();
+        }
+
+
+        //СПИСОК
+        if(id==R.id.btn_list) {
+            intent = new Intent(this, TopicActivity.class);
+            intent.putExtra("Level", topicLevel);
+            startActivity(intent);
+        }
+
+        //ДОМОЙ
+        if(id==R.id.btn_home) {
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 }
