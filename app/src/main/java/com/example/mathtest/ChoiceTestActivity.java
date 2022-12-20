@@ -200,7 +200,8 @@ public class ChoiceTestActivity extends AppCompatActivity {
                         sharedPreferences.edit().putFloat("Best " + topicTitle, percent).apply();
                     }
 
-                    String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + percent +"% )\n\n\n" +
+                    String stringPercent = String.format("%.1f", percent);
+                    String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + stringPercent +"% )\n\n\n" +
                             "Лучший результат: " + bestResult +"%");
                     exampleText.setText(resultText);
                 }
@@ -259,7 +260,8 @@ public class ChoiceTestActivity extends AppCompatActivity {
                 sharedPreferences.edit().putFloat("Best " + topicTitle, percent).apply();
             }
 
-            String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + percent +"% )\n\n\n" +
+            String stringPercent = String.format("%.1f", percent);
+            String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + stringPercent +"% )\n\n\n" +
                     "Лучший результат: " + bestResult +"%");
             exampleText.setText(resultText);
         }

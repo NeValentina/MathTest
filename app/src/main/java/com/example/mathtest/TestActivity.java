@@ -105,7 +105,7 @@ public class TestActivity extends AppCompatActivity {
                 b = (int) ((100 - 1) * Math.random());
                 x = rightAnswer = (int) ((10 - 1) * Math.random()) + 1;
                 c = a * x + b;
-                testText = (a + "x + " + b + " = " + c);
+                testText = (a + "x + " + b + " = " + c+"\nx = ?");
                 exampleText.setText(testText);
                 break;
 
@@ -139,7 +139,7 @@ public class TestActivity extends AppCompatActivity {
             } else Toast.makeText(getApplicationContext(), "Неверный ответ", Toast.LENGTH_SHORT).show();
 
 
-            if (answerNum < 2) {
+            if (answerNum < 5) {
                 answerNum += 1;
                 setTest();
             } else {
@@ -162,7 +162,8 @@ public class TestActivity extends AppCompatActivity {
                     sharedPreferences.edit().putFloat("Best " + topicTitle, percent).apply();
                 }
 
-                String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + percent +"% )\n\n\n" +
+                String stringPercent = String.format("%.1f", percent);
+                String resultText = ("Ваш результат:\n\nВерно " + correctAnswers + " из " + answerNum + ". ( " + stringPercent +"% )\n\n\n" +
                         "Лучший результат: " + bestResult +"%");
                 exampleText.setText(resultText);
             }
